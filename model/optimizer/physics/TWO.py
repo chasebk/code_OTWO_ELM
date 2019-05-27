@@ -83,7 +83,7 @@ class BaseTWO(RootAlgo):
             current_best = self._get_global_best__(pop_old, self.ID_FIT, self.ID_MAX_PROBLEM)
             if current_best[self.ID_FIT][self.ID_ERROR] > g_best[self.ID_FIT][self.ID_ERROR]:
                 g_best = deepcopy(current_best)
-            self.loss_train.append(1.0 / g_best[self.ID_FIT])
+            self.loss_train.append(1.0 / np.array(g_best[self.ID_FIT]))
             if self.print_train:
                 print("Generation : {0}, best result so far: {1}".format(epoch + 1, 1.0 / g_best[self.ID_FIT][self.ID_ERROR]))
         return g_best[self.ID_POS], self.loss_train
@@ -136,7 +136,7 @@ class OppoTWO(BaseTWO):
             current_best = self._get_global_best__(pop_old, self.ID_FIT, self.ID_MAX_PROBLEM)
             if current_best[self.ID_FIT][self.ID_ERROR] > g_best[self.ID_FIT][self.ID_ERROR]:
                 g_best = deepcopy(current_best)
-            self.loss_train.append(1.0 / g_best[self.ID_FIT])
+            self.loss_train.append(1.0 / np.array(g_best[self.ID_FIT]))
             if self.print_train:
                 print("Generation : {0}, best result so far: {1}".format(epoch + 1, 1.0 / g_best[self.ID_FIT][self.ID_ERROR]))
         return g_best[self.ID_POS], self.loss_train
@@ -207,7 +207,7 @@ class LevyTWO(BaseTWO):
             current_best = self._get_global_best__(pop_old, self.ID_FIT, self.ID_MAX_PROBLEM)
             if current_best[self.ID_FIT][self.ID_ERROR] > g_best[self.ID_FIT][self.ID_ERROR]:
                 g_best = deepcopy(current_best)
-            self.loss_train.append(1.0 / g_best[self.ID_FIT])
+            self.loss_train.append(1.0 / np.array(g_best[self.ID_FIT]))
             if self.print_train:
                 print("Generation : {0}, best result so far: {1}".format(epoch + 1, 1.0 / g_best[self.ID_FIT][self.ID_ERROR]))
         return g_best[self.ID_POS], self.loss_train
@@ -262,7 +262,7 @@ class ITWO(OppoTWO, LevyTWO):
             current_best = self._get_global_best__(pop_old, self.ID_FIT, self.ID_MAX_PROBLEM)
             if current_best[self.ID_FIT][self.ID_ERROR] > g_best[self.ID_FIT][self.ID_ERROR]:
                 g_best = deepcopy(current_best)
-            self.loss_train.append(1.0 / g_best[self.ID_FIT])
+            self.loss_train.append(1.0 / np.array(g_best[self.ID_FIT]))
             if self.print_train:
                 print("Generation : {0}, best result so far: {1}".format(epoch + 1, 1.0 / g_best[self.ID_FIT][self.ID_ERROR]))
         return g_best[self.ID_POS], self.loss_train
