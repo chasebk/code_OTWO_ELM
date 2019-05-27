@@ -1,6 +1,6 @@
 from model.optimizer.evolutionary import GA, DE
 from model.optimizer.swarm import PSO, BFO
-from model.optimizer.physics import QSO
+from model.optimizer.physics import QSO, TWO
 from model.root.hybrid.root_hybrid_elm import RootHybridElm
 
 class GaElm(RootHybridElm):
@@ -78,5 +78,58 @@ class QsoElm(RootHybridElm):
 
     def _training__(self):
         md = QSO.BaseQSO(root_algo_paras=self.root_algo_paras, qso_paras=self.qso_paras)
+        self.solution, self.loss_train = md._train__()
+
+
+
+class TwoElm(RootHybridElm):
+    def __init__(self, root_base_paras=None, root_hybrid_paras=None, two_paras=None):
+        RootHybridElm.__init__(self, root_base_paras, root_hybrid_paras)
+        self.two_paras = two_paras
+        self.filename = "TWO_ELM-sliding_{}-nets_{}-TWO_{}".format(root_base_paras["sliding"],
+            [root_hybrid_paras["epoch"], root_hybrid_paras["activation"], root_hybrid_paras["hidden_size"],
+             root_hybrid_paras["train_valid_rate"]], two_paras)
+
+    def _training__(self):
+        md = TWO.BaseTWO(root_algo_paras=self.root_algo_paras, two_paras=self.two_paras)
+        self.solution, self.loss_train = md._train__()
+
+
+class OTwoElm(RootHybridElm):
+    def __init__(self, root_base_paras=None, root_hybrid_paras=None, two_paras=None):
+        RootHybridElm.__init__(self, root_base_paras, root_hybrid_paras)
+        self.two_paras = two_paras
+        self.filename = "OppoTwo_ELM-sliding_{}-nets_{}-OTWO_{}".format(root_base_paras["sliding"],
+            [root_hybrid_paras["epoch"], root_hybrid_paras["activation"], root_hybrid_paras["hidden_size"],
+             root_hybrid_paras["train_valid_rate"]], two_paras)
+
+    def _training__(self):
+        md = TWO.OppoTWO(root_algo_paras=self.root_algo_paras, two_paras=self.two_paras)
+        self.solution, self.loss_train = md._train__()
+
+
+class LTwoElm(RootHybridElm):
+    def __init__(self, root_base_paras=None, root_hybrid_paras=None, two_paras=None):
+        RootHybridElm.__init__(self, root_base_paras, root_hybrid_paras)
+        self.two_paras = two_paras
+        self.filename = "LevyTwo_ELM-sliding_{}-nets_{}-LTWO_{}".format(root_base_paras["sliding"],
+            [root_hybrid_paras["epoch"], root_hybrid_paras["activation"], root_hybrid_paras["hidden_size"],
+             root_hybrid_paras["train_valid_rate"]], two_paras)
+
+    def _training__(self):
+        md = TWO.LevyTWO(root_algo_paras=self.root_algo_paras, two_paras=self.two_paras)
+        self.solution, self.loss_train = md._train__()
+
+
+class ITwoElm(RootHybridElm):
+    def __init__(self, root_base_paras=None, root_hybrid_paras=None, two_paras=None):
+        RootHybridElm.__init__(self, root_base_paras, root_hybrid_paras)
+        self.two_paras = two_paras
+        self.filename = "ImprovedQSO_ELM-sliding_{}-nets_{}-IQSO_{}".format(root_base_paras["sliding"],
+            [root_hybrid_paras["epoch"], root_hybrid_paras["activation"], root_hybrid_paras["hidden_size"],
+             root_hybrid_paras["train_valid_rate"]], two_paras)
+
+    def _training__(self):
+        md = TWO.ITWO(root_algo_paras=self.root_algo_paras, two_paras=self.two_paras)
         self.solution, self.loss_train = md._train__()
 

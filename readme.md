@@ -80,6 +80,8 @@ Thêm vào file ~/.bashrc hoặc ~/.bash_profile dòng sau:
 
     export OPENBLAS_NUM_THREADS=1  
     export MKL_NUM_THREADS=1       
+    
+    source ~/.bashrc
 
 ## Neu bi loi: Cannot share object lien quan den matplotlib tren server thi sua nhu sau:
 ```

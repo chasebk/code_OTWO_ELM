@@ -269,3 +269,16 @@ qso_elm_paras_final = {
     "pop_size": [50],                   # 100 -> 900
     "domain_range": [(-1, 1)]           # lower and upper bound
 }
+
+
+#### : TWO-ELM, OppTWO-ELM, LevyTWO-ELM, ITWO-ELM
+two_elm_paras_final = {
+    "sliding": [2, 5, 10],
+    "hidden_size": [(25, False)],
+    "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
+    "train_valid_rate": [(0.6, 0.4)],
+
+    "epoch": [100],
+    "pop_size": [50],                   # 100 -> 900
+    "domain_range": [(-1, 1)]           # lower and upper bound
+}
