@@ -1,11 +1,11 @@
 from sklearn.model_selection import ParameterGrid
-from model.main.hybrid_elm import TwoElm
+from model.main.hybrid_elm import GaElm
 from utils.IOUtil import read_dataset_file
-from utils.SettingPaper import two_elm_paras_final as param_grid
-from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
+from utils.SettingPaper import ga_elm_paras_final as param_grid
+from utils.SettingPaper import ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup
 
-rv_data = [traffic_eu, traffic_uk, worldcup]
-data_file = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
+rv_data = [ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup]
+data_file = ["google_5m", "google_5m", "google_5m", "google_5m", "it_eu_5m", "it_uk_5m", "worldcup98_5m"]
 test_type = "normal"  ### normal: for normal test, stability: for n_times test
 run_times = None
 
@@ -15,10 +15,11 @@ if test_type == "normal":  ### For normal test
     all_model_file_name = "elm_log_models"
 elif test_type == "stability":  ### For stability test (n times run with the same parameters)
     run_times = 15
-    pathsave = "paper/results/stability/"
-    all_model_file_name = "stability_two_elm"
+    pathsave = "paper/results/stability/elm/"
+    all_model_file_name = "stability_ga_elm"
 else:
     pass
+
 
 def train_model(item):
     root_base_paras = {
@@ -39,11 +40,12 @@ def train_model(item):
         "hidden_size": item["hidden_size"], "activation": item["activation"], "epoch": item["epoch"],
         "train_valid_rate": item["train_valid_rate"], "domain_range": item["domain_range"]
     }
-    two_paras = {
-        "epoch": item["epoch"], "pop_size": item["pop_size"]
+    ga_paras = {
+        "epoch": item["epoch"], "pop_size": item["pop_size"], "pc": item["pc"], "pm": item["pm"]
     }
-    md = TwoElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, two_paras=two_paras)
+    md = GaElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, ga_paras=ga_paras)
     md._running__()
+
 
 for _ in range(run_times):
     for loop in range(len(rv_data)):

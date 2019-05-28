@@ -100,9 +100,17 @@ class OppoTWO(BaseTWO):
         alpha = 0.99
         beta = 0.1
 
-        pop_old = [self._create_solution__(minmax=self.ID_MAX_PROBLEM) for _ in range(self.pop_size)]
+        pop_temp = [self._create_solution__(minmax=self.ID_MAX_PROBLEM) for _ in range(self.pop_size)]
+        pop_oppo = deepcopy(pop_temp)
+        for i in range(self.pop_size):
+            item_oppo = self.domain_range[1] * np.ones(self.problem_size) + self.domain_range[0] * np.ones(self.problem_size) - pop_temp[i][self.ID_POS]
+            fit = self._fitness_model__(item_oppo, self.ID_MAX_PROBLEM)
+            pop_oppo[i] = [item_oppo, fit, 0.0]
+        pop_oppo = pop_temp + pop_oppo
+        pop_old = sorted(pop_oppo, key=lambda item: item[self.ID_FIT])[self.pop_size:]
         pop_old = self._update_weight__(pop_old)
         g_best = max(pop_old, key=lambda x: x[self.ID_FIT][self.ID_ERROR])
+
         pop_new = deepcopy(pop_old)
         for epoch in range(self.epoch):
             for i in range(self.pop_size):

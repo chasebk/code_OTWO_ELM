@@ -2,10 +2,10 @@ from sklearn.model_selection import ParameterGrid
 from model.main.hybrid_elm import PsoElm
 from utils.IOUtil import read_dataset_file
 from utils.SettingPaper import pso_elm_paras_final as param_grid
-from utils.SettingPaper import ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup
+from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
 
-rv_data = [ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup]
-data_file = ["google_5m", "google_5m", "google_5m", "google_5m", "it_eu_5m", "it_uk_5m", "worldcup98_5m"]
+rv_data = [traffic_eu, traffic_uk, worldcup]
+data_file = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
 test_type = "normal"  ### normal: for normal test, stability: for n_times test
 run_times = None
 

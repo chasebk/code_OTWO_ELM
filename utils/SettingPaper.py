@@ -61,7 +61,7 @@ ggtrace_multi_ram = [
 
 ####: MLNN-1HL
 mlnn1hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -73,7 +73,7 @@ mlnn1hl_paras_final = {
 
 ####: MLNN-1HL
 mlnn2hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, 3, True] ],
     "activations": [("elu", "elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -85,7 +85,7 @@ mlnn2hl_paras_final = {
 
 ####: RNN-1HL
 rnn1hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -98,7 +98,7 @@ rnn1hl_paras_final = {
 
 ####: RNN-2HL
 rnn2hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, 3, True] ],
     "activations": [("elu", "elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -112,7 +112,7 @@ rnn2hl_paras_final = {
 
 ####: LSTM-1HL
 lstm1hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -126,7 +126,7 @@ lstm1hl_paras_final = {
 
 ####: LSTM-2HL
 lstm2hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, 3, True] ],
     "activations": [("elu", "elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -140,7 +140,7 @@ lstm2hl_paras_final = {
 
 ####: GRU-1HL
 gru1hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -154,7 +154,7 @@ gru1hl_paras_final = {
 
 ####: GRU--2HL
 gru2hl_paras_final = {
-    "sliding": [2, 5, 10],
+    "sliding": [2, 3, 5],
     "hidden_sizes" : [[5, 3, True] ],
     "activations": [("elu", "elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.0001],
@@ -168,8 +168,8 @@ gru2hl_paras_final = {
 
 #### : ELM
 elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size" : [(25, False) ],
+    "sliding": [2, 3, 5],
+    "hidden_size" : [(20, False) ],
     "activation": [0]                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
 }
 
@@ -180,8 +180,8 @@ elm_paras_final = {
 
 #### : GA-ELM
 ga_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size" : [(25, False)],
+    "sliding": [2, 3, 5],
+    "hidden_size" : [(20, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -194,8 +194,8 @@ ga_elm_paras_final = {
 
 #### : DE-ELM
 de_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size" : [(25, False) ],
+    "sliding": [2, 3, 5],
+    "hidden_size" : [(20, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -208,8 +208,8 @@ de_elm_paras_final = {
 
 #### : PSO-ELM
 pso_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size" : [(25, False) ],
+    "sliding": [2, 3, 5],
+    "hidden_size" : [(20, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -224,8 +224,8 @@ pso_elm_paras_final = {
 
 #### : BFO-ELM
 bfo_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size" : [(25, False) ],
+    "sliding": [2, 3, 5],
+    "hidden_size" : [(20, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -243,8 +243,8 @@ bfo_elm_paras_final = {
 
 #### : ABFOLS-ELM
 abfols_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size": [(25, False)],
+    "sliding": [2, 3, 5],
+    "hidden_size": [(20, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -260,8 +260,8 @@ abfols_elm_paras_final = {
 
 #### : QSO-ELM, OQSO-ELM, LQSO-ELM, IQSO-ELM
 qso_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size": [(25, False)],
+    "sliding": [2, 3, 5],
+    "hidden_size": [(20, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
@@ -273,8 +273,8 @@ qso_elm_paras_final = {
 
 #### : TWO-ELM, OppTWO-ELM, LevyTWO-ELM, ITWO-ELM
 two_elm_paras_final = {
-    "sliding": [2, 5, 10],
-    "hidden_size": [(25, False)],
+    "sliding": [2, 3, 5],
+    "hidden_size": [(20, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 

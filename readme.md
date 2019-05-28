@@ -7,19 +7,24 @@
 ## Model comparison
 1. MLNN
 2. ELM
-3. LSTM
-4. GA-ELM
-5. PSO-ELM
-6. TWO-ELM
+3. GA-ELM
+4. PSO-ELM
+5. TWO-ELM
+6. ITWO-ELM
 
 
 
 === Running ====
 1. GA-ELM
-2. PSO-ELM
-3. QSO-ELM 
+2. PSO-ELM 
 4. DE-ELM
 5. ABFOLS-ELM
+6. TWO-ELM
+7. ITWO-ELM
+
+
+
+
 
 
 

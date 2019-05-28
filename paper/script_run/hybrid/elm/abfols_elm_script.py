@@ -1,22 +1,22 @@
 from sklearn.model_selection import ParameterGrid
-from model.main.hybrid_elm import TwoElm
+from model.main.hybrid_elm import ABfoLSElm
 from utils.IOUtil import read_dataset_file
-from utils.SettingPaper import two_elm_paras_final as param_grid
-from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
+from utils.SettingPaper import abfols_elm_paras_final as param_grid
+from utils.SettingPaper import ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup
 
-rv_data = [traffic_eu, traffic_uk, worldcup]
-data_file = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
-test_type = "normal"  ### normal: for normal test, stability: for n_times test
+rv_data = [ggtrace_cpu, ggtrace_ram, ggtrace_multi_cpu, ggtrace_multi_ram, traffic_eu, traffic_uk, worldcup]
+data_file = ["google_5m", "google_5m", "google_5m", "google_5m", "it_eu_5m", "it_uk_5m", "worldcup98_5m"]
+test_type = "normal"                ### normal: for normal test, stability: for n_times test
 run_times = None
 
-if test_type == "normal":  ### For normal test
+if test_type == "normal":           ### For normal test
     run_times = 1
     pathsave = "paper/results/final/"
     all_model_file_name = "elm_log_models"
-elif test_type == "stability":  ### For stability test (n times run with the same parameters)
+elif test_type == "stability":      ### For stability test (n times run with the same parameters)
     run_times = 15
-    pathsave = "paper/results/stability/"
-    all_model_file_name = "stability_two_elm"
+    pathsave = "paper/results/stability/elm/"
+    all_model_file_name = "stability_abfols_elm"
 else:
     pass
 
@@ -39,10 +39,11 @@ def train_model(item):
         "hidden_size": item["hidden_size"], "activation": item["activation"], "epoch": item["epoch"],
         "train_valid_rate": item["train_valid_rate"], "domain_range": item["domain_range"]
     }
-    two_paras = {
-        "epoch": item["epoch"], "pop_size": item["pop_size"]
+    abfols_paras = {
+        "epoch": item["epoch"], "pop_size": item["pop_size"], "Ci": item["Ci"], "Ped": item["Ped"], "Ns": item["Ns"],
+        "N_minmax": item["N_minmax"]
     }
-    md = TwoElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, two_paras=two_paras)
+    md = ABfoLSElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, abfols_paras=abfols_paras)
     md._running__()
 
 for _ in range(run_times):
@@ -54,4 +55,9 @@ for _ in range(run_times):
         # Create combination of params.
         for item in list(ParameterGrid(param_grid)):
             train_model(item)
+
+
+
+
+
 
