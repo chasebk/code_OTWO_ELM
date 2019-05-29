@@ -11,9 +11,9 @@ class RootMlnn(RootBase):
         self.optimizer = root_mlnn_paras["optimizer"]
         self.loss = root_mlnn_paras["loss"]
         if root_mlnn_paras["hidden_sizes"][-1]:
-            self.hidden_sizes = root_mlnn_paras["hidden_size"][:-1]
+            self.hidden_sizes = root_mlnn_paras["hidden_sizes"][:-1]
         else:
-            num_hid = len(root_mlnn_paras["hidden_size"]) - 1
+            num_hid = len(root_mlnn_paras["hidden_sizes"]) - 1
             self.hidden_sizes = [(num_hid - i) * root_base_paras["sliding"] * root_base_paras["feature_size"] + 1 for i in range(num_hid)]
 
 
