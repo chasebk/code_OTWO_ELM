@@ -1,0 +1,1 @@
+model_name,time_total_train,time_epoch,time_predict,time_system,explained_variance_nor,MAE_nor,MSE_nor,mean_squared_log_error_nor,r2_nor,RMSE_nor,MAPE_nor,SMAPE_nor,explained_variance_denor,MAE_denor,MSE_denor,mean_squared_log_error_denor,r2_denor,RMSE_denor,MAPE_denor,SMAPE_denor

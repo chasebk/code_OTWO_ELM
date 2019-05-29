@@ -6,7 +6,7 @@ from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
 
 rv_data = [traffic_eu, traffic_uk, worldcup]
 data_file = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
-test_type = "normal"                ### normal: for normal test, stability: for n_times test
+test_type = "stability"                ### normal: for normal test, stability: for n_times test
 run_times = None
 
 if test_type == "normal":           ### For normal test
@@ -15,7 +15,7 @@ if test_type == "normal":           ### For normal test
     all_model_file_name = "elm_log_models"
 elif test_type == "stability":      ### For stability test (n times run with the same parameters)
     run_times = 15
-    pathsave = "paper/results/stability/elm/"
+    pathsave = "paper/results/stability/"
     all_model_file_name = "stability_abfols_elm"
 else:
     pass

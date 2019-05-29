@@ -6,7 +6,7 @@ from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
 
 rv_data = [traffic_eu, traffic_uk, worldcup]
 data_file = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
-test_type = "normal"  ### normal: for normal test, stability: for n_times test
+test_type = "stability"  ### normal: for normal test, stability: for n_times test
 run_times = None
 
 if test_type == "normal":  ### For normal test
