@@ -15,12 +15,9 @@
 
 
 === Running ====
-1. GA-ELM
-2. PSO-ELM 
-4. DE-ELM
-5. ABFOLS-ELM
-6. TWO-ELM
-7. ITWO-ELM
+1. ELM
+2. MLNN
+
 
 
 

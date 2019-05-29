@@ -62,10 +62,10 @@ ggtrace_multi_ram = [
 ####: MLNN-1HL
 mlnn1hl_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_sizes" : [[5, True] ],
+    "hidden_sizes" : [[20, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
-    "learning_rate": [0.0001],
-    "epoch": [5000],
+    "learning_rate": [0.001],
+    "epoch": [2000],
     "batch_size": [128],
     "optimizer": ["adam"],   # GradientDescentOptimizer, AdamOptimizer, AdagradOptimizer, AdadeltaOptimizer
     "loss": ["mse"]
@@ -169,7 +169,7 @@ gru2hl_paras_final = {
 #### : ELM
 elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False) ],
+    "hidden_size" : [(20, False), (40, False) , (50, False) , (100, False) , (150, False) , (200, False)  ],
     "activation": [0]                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
 }
 
