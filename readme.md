@@ -15,13 +15,9 @@
 
 
 === Running ====
-1. ELM
-2. MLNN
+1. MLNN (normal mode)
 
-
-
-
-
+==> Last: MLNN (stability mode)
 
 
 
@@ -38,7 +34,6 @@ http://www3.ntu.edu.sg/home/ASAHTan/Papers/2008/ELM%20NEUCOM%2008.pdf
 http://or.nsfc.gov.cn/bitstream/00001903-5/112878/1/1000004116461.pdf
 
 ```
-
 
 
 

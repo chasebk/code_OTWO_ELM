@@ -169,7 +169,7 @@ gru2hl_paras_final = {
 #### : ELM
 elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False), (40, False) , (50, False) , (100, False) , (150, False) , (200, False)  ],
+    "hidden_size" : [(10, False), (50, False) , (200, False) , (500, False) , (1000, False) , (5000, False)  ],
     "activation": [0]                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
 }
 
@@ -181,12 +181,12 @@ elm_paras_final = {
 #### : GA-ELM
 ga_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False)],
+    "hidden_size" : [(5, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],                   # 100 -> 900
+    "pop_size": [20],                   # 100 -> 900
     "pc": [0.95],                       # 0.85 -> 0.97
     "pm": [0.025],                      # 0.005 -> 0.10
     "domain_range": [(-1, 1)]           # lower and upper bound
@@ -195,12 +195,12 @@ ga_elm_paras_final = {
 #### : DE-ELM
 de_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False) ],
+    "hidden_size" : [(5, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],                  # 10 * problem_size
+    "pop_size": [20],                  # 10 * problem_size
     "Wf": [0.8],                        # Weighting factor
     "Cr": [0.9],                        # Crossover rate
     "domain_range": [(-1, 1)]           # lower and upper bound
@@ -209,12 +209,12 @@ de_elm_paras_final = {
 #### : PSO-ELM
 pso_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False) ],
+    "hidden_size" : [(5, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],                  # 100 -> 900
+    "pop_size": [20],                  # 100 -> 900
     "w_minmax": [(0.4, 0.9)],  # [0-1] -> [0.4-0.9]      Trong luong cua con chim
     "c_minmax": [(1.2, 1.2)],  # [(1.2, 1.2), (0.8, 2.0), (1.6, 0.6)]     # [0-2]   Muc do anh huong cua local va global
     # r1, r2 : random theo tung vong lap
@@ -225,11 +225,11 @@ pso_elm_paras_final = {
 #### : BFO-ELM
 bfo_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size" : [(20, False) ],
+    "hidden_size" : [(5, False) ],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
-    "pop_size": [50],                  # 100 -> 900
+    "pop_size": [20],                  # 100 -> 900
     "Ci": [0.05],                       # step_size
     "Ped": [0.25],                      # p_eliminate
     "Ns": [4],                          # swim_length
@@ -244,12 +244,12 @@ bfo_elm_paras_final = {
 #### : ABFOLS-ELM
 abfols_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size": [(20, False)],
+    "hidden_size": [(5, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],               # 100 -> 900
+    "pop_size": [20],               # 100 -> 900
     "Ci": [(0.1, 0.00001)],         # C_s (start), C_e (end)  -=> step size # step size in BFO
     "Ped": [0.25],                  # p_eliminate
     "Ns": [4],                      # swim_length
@@ -261,12 +261,12 @@ abfols_elm_paras_final = {
 #### : QSO-ELM, OQSO-ELM, LQSO-ELM, IQSO-ELM
 qso_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size": [(20, False)],
+    "hidden_size": [(5, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],                   # 100 -> 900
+    "pop_size": [20],                   # 100 -> 900
     "domain_range": [(-1, 1)]           # lower and upper bound
 }
 
@@ -274,11 +274,11 @@ qso_elm_paras_final = {
 #### : TWO-ELM, OppTWO-ELM, LevyTWO-ELM, ITWO-ELM
 two_elm_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_size": [(20, False)],
+    "hidden_size": [(5, False)],
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
-    "pop_size": [50],                   # 100 -> 900
+    "pop_size": [20],                   # 100 -> 900
     "domain_range": [(-1, 1)]           # lower and upper bound
 }
