@@ -64,7 +64,9 @@ class BasePSO(RootAlgo):
                     pop[j][self.ID_PAST_POSITION_BEST] = deepcopy(xi_sau)
                     pop[j][self.ID_PAST_FITNESS] = fit_sau
 
-            gbest = self._get_global_best__(pop=pop, id_fitness=self.ID_CURRENT_FITNESS, id_best=self.ID_MIN_PROBLEM)
+            cur_best = self._get_global_best__(pop=pop, id_fitness=self.ID_CURRENT_FITNESS, id_best=self.ID_MIN_PROBLEM)
+            if cur_best[self.ID_CURRENT_FITNESS][self.ID_ERROR] < gbest[self.ID_CURRENT_FITNESS][self.ID_ERROR]:
+                gbest = deepcopy(cur_best)
             self.loss_train.append(gbest[self.ID_CURRENT_FITNESS])
             if self.print_train:
                 print("Generation : {0}, average MAE over population: {1}".format(i+1, gbest[self.ID_CURRENT_FITNESS][self.ID_ERROR]))

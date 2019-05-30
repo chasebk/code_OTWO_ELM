@@ -1,5 +1,5 @@
 from sklearn.model_selection import ParameterGrid
-from model.main.hybrid_elm import TwoElm
+from model.main.hybrid_elm import OTwoElm
 from utils.IOUtil import read_dataset_file
 from utils.SettingPaper import two_elm_paras_final as param_grid
 from utils.SettingPaper import traffic_eu, traffic_uk, worldcup
@@ -42,7 +42,7 @@ def train_model(item):
     two_paras = {
         "epoch": item["epoch"], "pop_size": item["pop_size"]
     }
-    md = TwoElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, two_paras=two_paras)
+    md = OTwoElm(root_base_paras=root_base_paras, root_hybrid_paras=root_hybrid_paras, two_paras=two_paras)
     md._running__()
 
 for _ in range(run_times):
