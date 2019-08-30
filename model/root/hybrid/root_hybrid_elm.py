@@ -43,8 +43,11 @@ class RootHybridElm(RootBase):
 
     ## Helper functions
     def _get_model__(self, individual=None):
-        X_train = np.concatenate( (self.X_train, self.X_valid), axis=0 )
-        y_train = np.concatenate( (self.y_train, self.y_valid), axis=0 )
+        X_train = self.X_train
+        y_train = self.y_train
+        if self.X_valid is not None:
+            X_train = np.concatenate( (self.X_train, self.X_valid), axis=0 )
+            y_train = np.concatenate( (self.y_train, self.y_valid), axis=0 )
         w1 = np.reshape(individual[:self.w1_size], (self.input_size, self.hidden_size))
         b = np.reshape(individual[self.w1_size:self.w1_size + self.b_size], (-1, self.hidden_size))
         H = self._activation__(np.add(np.matmul(X_train, w1), b))

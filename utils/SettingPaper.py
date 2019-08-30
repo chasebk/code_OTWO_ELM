@@ -278,7 +278,7 @@ two_elm_paras_final = {
     "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "train_valid_rate": [(0.6, 0.4)],
 
-    "epoch": [100],
+    "epoch": [250],
     "pop_size": [20],                   # 100 -> 900
     "domain_range": [(-1, 1)]           # lower and upper bound
 }

@@ -31,10 +31,15 @@ class RootAlgo(object):
     def _fitness_model__(self, model=None, minmax=0):
         """ distance between the sum of an individual numbers and the target number. Lower is better"""
         ae_train = self._get_average_error__(model, self.X_train, self.y_train)
-        ae_valid = self._get_average_error__(model, self.X_valid, self.y_valid)
-        mse = self.train_valid_rate[0] * ae_train[0] + self.train_valid_rate[1] * ae_valid[0]
-        mae = self.train_valid_rate[0] * ae_train[1] + self.train_valid_rate[1] * ae_valid[1]
+        if self.X_valid is not None:
+            ae_valid = self._get_average_error__(model, self.X_valid, self.y_valid)
+            mse = self.train_valid_rate[0] * ae_train[0] + self.train_valid_rate[1] * ae_valid[0]
+            mae = self.train_valid_rate[0] * ae_train[1] + self.train_valid_rate[1] * ae_valid[1]
+        else:
+            mse = ae_train[0]
+            mae = ae_train[1]
         return [mse, mae] if minmax == 0 else [1.0 / mse, 1.0 / mae]
+
 
     def _fitness_encoded__(self, encoded=None, id_pos=None, minmax=0):
         return self._fitness_model__(model=encoded[id_pos], minmax=minmax)
@@ -51,13 +56,12 @@ class RootAlgo(object):
                 solution[i] = self.domain_range[1]
 
     def _amend_solution_and_return__(self, solution=None):
-        temp = deepcopy(solution)
         for i in range(self.problem_size):
             if solution[i] < self.domain_range[0]:
                 solution[i] = np.random.uniform()
             if solution[i] > self.domain_range[1]:
                 solution[i] = self.domain_range[1]
-        return temp
+        return solution
 
     def _create_opposition_solution__(self, solution=None, g_best=None):
         opp = [self.domain_range[0] + self.domain_range[1] - g_best[i] + np.random.random() * (g_best[i] - solution[i])

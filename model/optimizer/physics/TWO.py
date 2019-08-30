@@ -23,7 +23,7 @@ class BaseTWO(RootAlgo):
         best_fitness = max(teams, key=lambda x: x[self.ID_FIT])[self.ID_FIT][self.ID_ERROR]
         worst_fitness = min(teams, key=lambda x: x[self.ID_FIT])[self.ID_FIT][self.ID_ERROR]
         for i in range(self.pop_size):
-            teams[i][self.ID_WEIGHT] = (teams[i][self.ID_FIT][self.ID_ERROR] - worst_fitness)/(best_fitness - worst_fitness) + 1
+            teams[i][self.ID_WEIGHT] = 0.9*(teams[i][self.ID_FIT][self.ID_ERROR] - worst_fitness)/(best_fitness - worst_fitness) + 0.1
         return teams
 
     def _update_fit__(self, teams):
