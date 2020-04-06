@@ -1,5 +1,4 @@
-*pyc
+*.pyc
 .idea/
-drafts/
 data/raw/
 
