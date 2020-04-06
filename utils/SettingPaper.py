@@ -1,60 +1,27 @@
 ###### Config for test
 
-###: Variables
-traffic_eu = [
-    "data/formatted/",    # pd.readfilepath
-    [4],                    # usecols trong pd
-    False,                  # multi_output
-    None,                   # output_idx
-    "eu/",                  # path_save_result
-]
-traffic_uk = [
-    "data/formatted/",    # pd.readfilepath
-    [2],                    # usecols trong pd
-    False,                  # multi_output
-    None,                   # output_idx
-    "uk/",                  # path_save_result
-]
+SP_RUN_TIMES = 3
+SP_LOG_FILENAME = "LOG_MODELS"
+SP_PATH_SAVE_BASE = "history/results/"
+SP_DRAW = True
+SP_PRINT_TRAIN = 2  # 0: nothing, 1 : full detail, 2: short version
+SP_PREPROCESSING_METHOD = 0  # 0: sliding window, 1: mean, 2: min-mean-max, 3: min-median-max
 
-worldcup = [
-    "data/formatted/",    # pd.readfilepath
-    [2],            # usecols trong pd
-    False,          # multi_output
-    None,           # output_idx
-    "wc/",    # path_save_result
-]
+SP_DATA_SPLIT_INDEX = (0.8, 0, 0.2)
 
-ggtrace_cpu = [
-    "data/formatted/",    # pd.readfilepath
-    [1],         # usecols trong pd
-    False,          # multi_output
-    None,              # output_idx
-    "cpu/",     # path_save_result
-]
+SP_LOAD_DATA_FROM = "data/formatted/"
+SP_DATA_FILENAME = ["it_eu_5m", "it_uk_5m", "worldcup98_5m"]
+SP_DATA_COLS = [[4], [2], [2]]
+SP_DATA_MULTI_OUTPUT = [False, False, False]
+SP_OUTPUT_INDEX = [None, None, None]
 
-ggtrace_ram = [
-    "data/formatted/",    # pd.readfilepath
-    [2],             # usecols trong pd
-    False,              # multi_output
-    None,                  # output_idx
-    "ram/",       # path_save_result
-]
 
-ggtrace_multi_cpu = [
-    "data/formatted/",    # pd.readfilepath
-    [1, 2],         # usecols trong pd
-    False,          # multi_output
-    0,              # output_idx
-    "multi_cpu/",     # path_save_result
-]
+### Full avaiable dataset
+# SP_DATA_FILENAME = ["it_eu_5m", "it_uk_5m", "worldcup98_5m", "gg_cpu", "gg_ram", "gg_multi_cpu", "gg_multi_ram"]
+# SP_DATA_COLS = [[4], [2], [2], [1], [2], [1, 2], [1, 2]]
+# SP_DATA_MULTI_OUTPUT = [False, False, False, False, False, False, False]
+# SP_OUTPUT_INDEX = [None, None, None, None, None, 0, 1]
 
-ggtrace_multi_ram = [
-    "data/formatted/",    # pd.readfilepath
-    [1, 2],             # usecols trong pd
-    False,              # multi_output
-    1,                  # output_idx
-    "multi_ram/",       # path_save_result
-]
 
 
 ######################## Paras according to the paper
@@ -62,10 +29,10 @@ ggtrace_multi_ram = [
 ####: MLNN-1HL
 mlnn1hl_paras_final = {
     "sliding": [2, 3, 5],
-    "hidden_sizes" : [[20, True] ],
+    "hidden_sizes": [[20, True] ],
     "activations": [("elu", "elu")],  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
     "learning_rate": [0.001],
-    "epoch": [2000],
+    "epoch": [10],
     "batch_size": [128],
     "optimizer": ["adam"],   # GradientDescentOptimizer, AdamOptimizer, AdagradOptimizer, AdadeltaOptimizer
     "loss": ["mse"]

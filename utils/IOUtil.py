@@ -1,30 +1,51 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr 15 09:49:35 2018
-@author: thieunv
-"""
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 00:51, 29/03/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
 
 import numpy as np
 import pandas as pd
-import csv
+from csv import DictWriter
+from os import getcwd, path, makedirs
+
+
+def save_all_models_to_csv(item=None, log_filename=None, pathsave=None):
+    check_directory = getcwd() + "/" + pathsave
+    if not path.exists(check_directory):
+        makedirs(check_directory)
+    with open(pathsave + log_filename + ".csv", 'a') as file:
+        w = DictWriter(file, delimiter=',', lineterminator='\n', fieldnames=item.keys())
+        if file.tell() == 0:
+            w.writeheader()
+        w.writerow(item)
+
 
 def save_prediction_to_csv(y_test=None, y_pred=None, filename=None, pathsave=None):
-    t1 = np.concatenate((y_test, y_pred), axis=1)
-    np.savetxt(pathsave + filename + ".csv", t1, delimiter=",")
+    check_directory = getcwd() + "/" + pathsave
+    if not path.exists(check_directory):
+        makedirs(check_directory)
+
+    temp = np.concatenate((y_test, y_pred), axis=1)
+    np.savetxt(pathsave + filename + ".csv", temp, delimiter=",")
     return None
+
 
 def save_loss_train_to_csv(error=None, filename=None, pathsave=None):
     np.savetxt(pathsave + filename + ".csv", np.array(error), delimiter=",")
     return None
 
 
+def load_dataset(path_to_data=None, cols=None):
+    df = pd.read_csv(path_to_data + ".csv", usecols=cols)
+    return df.values
 
 
-def save_all_models_to_csv(item=None, log_filename=None, pathsave=None):
-    with open(pathsave + log_filename + ".csv", "a+") as file:
-        wr = csv.writer(file, dialect='excel')
-        wr.writerow(item)
+
+
 
 def save_run_test(num_run_test=None, data=None, filepath=None):
     t0 = np.reshape(data, (num_run_test, -1))
