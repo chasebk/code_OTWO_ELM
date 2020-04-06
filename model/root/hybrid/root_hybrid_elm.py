@@ -20,15 +20,14 @@ class RootHybridElm(RootBase):
     """
     def __init__(self, root_base_paras=None, root_hybrid_paras=None):
         RootBase.__init__(self, root_base_paras)
-        self.epoch = root_hybrid_paras["epoch"]
         self.activation = root_hybrid_paras["activation"]
-        self.train_valid_rate = root_hybrid_paras["train_valid_rate"]
         self.domain_range = root_hybrid_paras["domain_range"]
         if root_hybrid_paras["hidden_size"][1]:
             self.hidden_size = root_hybrid_paras["hidden_size"][0]
         else:
             self.hidden_size = 2*(root_base_paras["sliding"]*root_base_paras["feature_size"])**2 + 1
         self._activation__ = getattr(my_math, self.activation)
+        self.epoch = None
 
     def _setting__(self):
         self.input_size, self.output_size = self.X_train.shape[1], self.y_train.shape[1]
@@ -55,7 +54,7 @@ class RootHybridElm(RootBase):
         self.time_epoch = round(self.time_total_train / self.epoch, 4)
         self.time_predict = time.time()
         y_true_unscaled, y_pred_unscaled, y_true_scaled, y_pred_scaled = self._forecasting__()
-        self.time_predict = round(time.time() - self.time_predict, 6)
+        self.time_predict = round(time.time() - self.time_predict, 8)
         self.time_system = round(time.time() - self.time_system, 4)
         self._save_results__(y_true_unscaled, y_pred_unscaled, y_true_scaled, y_pred_scaled, self.loss_train, self.n_runs)
 
