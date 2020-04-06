@@ -60,7 +60,7 @@ class RootHybridElm(RootBase):
 
     ## Helper functions
     def _get_model__(self, solution=None):
-        X_train, y_train = None, None
+        X_train, y_train = self.X_train, self.y_train
         if self.X_valid is not None:
             X_train = np.concatenate((self.X_train, self.X_valid), axis=0)
             y_train = np.concatenate((self.y_train, self.y_valid), axis=0)
@@ -71,7 +71,7 @@ class RootHybridElm(RootBase):
         return {"w1": w1, "b": b, "w2": w2}
 
     def _objective_function__(self, solution=None):
-        X_train, y_train = None, None
+        X_train, y_train = self.X_train, self.y_train
         if self.X_valid is not None:
             X_train = np.concatenate((self.X_train, self.X_valid), axis=0)
             y_train = np.concatenate((self.y_train, self.y_valid), axis=0)
@@ -81,4 +81,4 @@ class RootHybridElm(RootBase):
         H_pinv = np.linalg.pinv(H)  # compute a pseudo-inverse of H
         w2 = np.dot(H_pinv, y_train)  # calculate weights between hidden and output layer
         y_pred = np.matmul(H, w2)
-        return mean_squared_error(y_pred, self.y_train)
+        return mean_squared_error(y_pred, y_train)

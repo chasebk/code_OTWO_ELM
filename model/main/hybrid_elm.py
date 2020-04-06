@@ -47,10 +47,10 @@ class PsoElm(RootHybridElm):
         RootHybridElm.__init__(self, root_base_paras, root_hybrid_paras)
         self.epoch = pso_paras["epoch"]
         self.pop_size = pso_paras["pop_size"]
-        self.c1 = pso_paras["c1"]
-        self.c2 = pso_paras["c2"]
-        self.w_min = pso_paras["w_min"]
-        self.w_max = pso_paras["w_max"]
+        self.c1 = pso_paras["c_minmax"][0]
+        self.c2 = pso_paras["c_minmax"][1]
+        self.w_min = pso_paras["w_minmax"][0]
+        self.w_max = pso_paras["w_minmax"][1]
         self.filename = "PSO_ELM-sliding_{}-{}".format(root_base_paras["sliding"], root_hybrid_paras["paras_name"])
 
     def _training__(self):
