@@ -1,11 +1,21 @@
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 01:51, 29/03/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
+
 from keras.models import Sequential
 from keras.layers import Dense
 from model.root.traditional.root_mlnn import RootMlnn
 
+
 class Mlnn1HL(RootMlnn):
     def __init__(self, root_base_paras=None, root_mlnn_paras=None):
         RootMlnn.__init__(self, root_base_paras, root_mlnn_paras)
-        self.filename = "MLNN-1H-sliding_{}-net_para_{}".format(root_base_paras["sliding"], root_mlnn_paras)
+        self.filename = "MLNN-1H-sliding_{}-{}".format(root_base_paras["sliding"], root_mlnn_paras["paras_name"])
 
     def _training__(self):
         self.model = Sequential()
@@ -19,7 +29,7 @@ class Mlnn1HL(RootMlnn):
 class Mlnn2HL(RootMlnn):
     def __init__(self, root_base_paras=None, root_mlnn_paras=None):
         RootMlnn.__init__(self, root_base_paras, root_mlnn_paras)
-        self.filename = "MLNN-2H-sliding_{}-net_para_{}".format(root_base_paras["sliding"], root_mlnn_paras)
+        self.filename = "MLNN-2H-sliding_{}-{}".format(root_base_paras["sliding"], root_mlnn_paras["paras_name"])
 
     def _training__(self):
         self.model = Sequential()

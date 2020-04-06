@@ -1,12 +1,21 @@
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 02:51, 29/03/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
+
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, GRU, Dropout
 from model.root.traditional.root_rnn import RootRnn
 
+
 class Rnn1HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "RNN-1HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "RNN-1HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
 
     def _training__(self):
         #  The RNN architecture
@@ -22,8 +31,7 @@ class Rnn1HL(RootRnn):
 class Rnn2HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "RNN-2HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "RNN-2HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
 
     def _training__(self):
         #  The RNN architecture
@@ -38,13 +46,10 @@ class Rnn2HL(RootRnn):
         self.loss_train = ml.history["loss"]
 
 
-
-
 class Lstm1HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "LSTM-1HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "LSTM-1HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
     def _training__(self):
         #  The LSTM architecture
         self.model = Sequential()
@@ -55,12 +60,10 @@ class Lstm1HL(RootRnn):
         self.loss_train = ml.history["loss"]
 
 
-
 class Lstm2HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "LSTM-2HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "LSTM-2HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
     def _training__(self):
         #  The LSTM architecture
         self.model = Sequential()
@@ -72,14 +75,10 @@ class Lstm2HL(RootRnn):
         self.loss_train = ml.history["loss"]
 
 
-
-
-
 class Gru1HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "GRU-1HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "GRU-1HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
     def _training__(self):
         #  The GRU architecture
         self.model = Sequential()
@@ -91,12 +90,11 @@ class Gru1HL(RootRnn):
         self.loss_train = ml.history["loss"]
 
 
-
 class Gru2HL(RootRnn):
     def __init__(self, root_base_paras=None, root_rnn_paras=None):
         RootRnn.__init__(self, root_base_paras, root_rnn_paras)
-        self.filename = "GRU-2HL-sliding_{}-net_para_{}".format(root_base_paras["sliding"], [self.hidden_sizes, self.epoch,
-                            self.batch_size, self.learning_rate, self.activations, self.optimizer, self.loss])
+        self.filename = "GRU-2HL-sliding_{}-{}".format(root_base_paras["sliding"], root_rnn_paras["paras_name"])
+
     def _training__(self):
         #  The GRU architecture
         self.model = Sequential()

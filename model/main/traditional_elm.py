@@ -1,5 +1,15 @@
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 00:51, 29/03/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
+
 from model.root.traditional.root_elm import RootElm
 import numpy as np
+
 
 class Elm(RootElm):
     """
@@ -7,7 +17,7 @@ class Elm(RootElm):
     """
     def __init__(self, root_base_paras=None, root_elm_paras=None):
         RootElm.__init__(self, root_base_paras, root_elm_paras)
-        self.filename = "ELM-sliding_{}-net_para_{}".format(root_base_paras["sliding"], root_elm_paras)
+        self.filename = "ELM-sliding_{}-{}".format(root_base_paras["sliding"], root_elm_paras["paras_name"])
 
     def _training__(self):
         """
