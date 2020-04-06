@@ -1,9 +1,16 @@
 # A Novel Workload Prediction Model Using ELM with Opposition-based Tug of War Optimization
+[![GitHub release](https://img.shields.io/badge/release-2.0.0-yellow.svg)]()
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3626114.svg)](https://doi.org/10.5281/zenodo.3626114)
+[![License](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
-## Cite us
-* If you see my code and data useful and use it, please cite us as follows
-	
-	* Nguyen, T., Nguyen, T., Nguyen, B. M., & Nguyen, G. (2019). Efficient Time-Series Forecasting Using Neural Network and Opposition-Based Coral Reefs Optimization. International Journal of Computational Intelligence Systems, 12(2), 1144-1161.
+## Dear friends and followers
+* I updated to repository to the newest version, which is very easy to read and reproduce. 
+* All of our optimizer (meta-heuristics) now deleted and taken the new one from my newest library: 
+
+        https://pypi.org/project/mealpy/
+    
+* If you use my code or library in your project, I would appreciate the cites:
+    * Nguyen, T., Nguyen, T., Nguyen, B. M., & Nguyen, G. (2019). Efficient Time-Series Forecasting Using Neural Network and Opposition-Based Coral Reefs Optimization. International Journal of Computational Intelligence Systems, 12(2), 1144-1161.
 	
 	* Nguyen, T., Nguyen, B. M., & Nguyen, G. (2019, April). Building Resource Auto-scaler with Functional-Link Neural Network and Adaptive Bacterial Foraging Optimization. In International Conference on Theory and Applications of Models of Computation (pp. 501-517). Springer, Cham.
 	
@@ -11,30 +18,15 @@
 
 * If you want to know more about code, or want a pdf of both above paper, contact me: nguyenthieu2102@gmail.com
 
-* Take a look at this repos, the simplify code using python (numpy) for all algorithms above. (without neural networks)
-	
-	* https://github.com/thieunguyen5991/metaheuristics
-
 ## How to read my repository
 1. data: include raw and formatted data
 2. envs: include conda environment and how to install conda environment 
 3. utils: Helped functions such as IO, Draw, Math, Settings (for all model and parameters), Preprocessing...
-4. paper: include 2 main folders: 
-    * results: forecasting results of all models (3 folders inside) 
-        * final: final forecasting results (runs on server)
-        * test: testing forecasting results (runs on personal computer, just for test)
-        * temp: nothing (just for copy of test folder)
-    * scaling: scaling results
-5. model: (4 folders) 
+4. model: (2 folders) 
     * root: (want to understand the code, read this classes first)
         * root_base.py: root for all models (traditional, hybrid and variants...) 
-        * root_algo.py: root for all optimization algorithms
         * traditional: root for all traditional models (inherit: root_base)
         * hybrid: root for all hybrid models (inherit: root_base)
-    * optimizer: (this classes inherit: root_algo.py)
-        * evolutionary: include algorithms related to evolution algorithm such as GA, DE,..
-        * swarm: include algorithms related to swarm optimization such as PSO, BFO, ...
-        * physics: include algorithms related to physics optimization such as QSO, TWO, ...
     * main: (final models)
         * this classes will use those optimizer above and those root (traditional, hybrid) above 
         * the running files (outside with the downloaded folder) will call this classes
@@ -80,16 +72,7 @@ For example:
 	8. OTWO-ELM => otwo_elm_script.py
 ```
 
-3. In paper/results/final model includes folder's name represent the data such as 
-```code
-cpu: input model would be cpu, output model would be cpu 
-ram: same as cpu
-multi_cpu : input model would be cpu and ram, output model would be cpu 
-multi_ram : input model would be cpu and ram, output model would be ram
-multi : input model would be cpu and ram, output model would be cpu and ram
-```
-
-4. How to change model's parameters?
+### How to change model's parameters?
 ```code 
 You can change the model's parameters in file: utils/SettingPaper.py 
 
@@ -124,7 +107,7 @@ mlnn1hl_paras_final = {
 ga_elm_paras_final = {
     "sliding": [2, 3, 5],
     "hidden_size" : [(5, False)],
-    "activation": [0],                  # 0: elu, 1:relu, 2:tanh, 3:sigmoid
+    "activation": ["elu"],                  
     "train_valid_rate": [(0.6, 0.4)],
 
     "epoch": [100],
@@ -137,47 +120,28 @@ ga_elm_paras_final = {
 - Same as traditional models.
 ```
 
-5. Where is the results folder?
+### Where is the results folder?
 ```code 
 - Look at the running file, for example: ga_elm_script.py
 
-+) For normal runs (Only run 1 time for each model).
++) For 1-time runs (Only run 1 time for each model).
     _There are 3 type of results file include: model_name.csv file, model_name.png file and Error-model_name.csv file 
     _model_name.csv included: y_true and y_predict 
     _model_name.png is visualized of: y_true and y_predict (test dataset)
-    _Error-model_name.csv included errors of training dataset after epoch. 1st, 2nd column are: MSE, MAE errors
+    _Error-model_name.csv included errors of training dataset after epoch. 1st, 2nd column are: MSE errors
 
-=> All 3 type of files above is automatically generated in folder: paper/results/final/...
+=> All 3 type of files above is automatically generated in folder which you can set in SettingPaper
 
-+) For stability runs (Run each model 15 times with same parameters).
++) For stability runs (Run each model n-time with same parameters).
 Because in this test, we don't need to visualize the y_true and y_predict and also don't need to save y_true and y_predict
-So I just save 15 times running in the same csv files in folder: paper/results/stability/...
+So I just save n-time running in the same csv files in folder
 
 - Noted:
 
-+ In the training set we can use MSE or MAE error. But for the testing set, we can use so much more error like: R2, MAPE, ...
++ In the training set we use MSE. But for the testing set, we can use so much more error like: R2, MAPE, ...
 You can find the function code described it in file: 
     model/root/root_base.py 
-        + _save_results__: this is for normal runs
-        + _save_results_ntimes_run__: this is for stability runs.
-
-+ You want to change the directory to save results?. Simple.
-
-For example: Look at running file: ga_elm_script.py
-
-_Line 14: pathsave = "paper/results/final/"   --> This is general path to save file. 
-But for each dataset like: wc, uk, eu,... I need to save it in different folder right. So now look at 
-
-_Line 34:  "path_save_result": pathsave + requirement_variables[4].
-Here, the requirement_variables[4]: is inside file: utils/SettingPaper.py ("eu/", # path_save_result)
-
-So the final path to save the results for normal runs is: paper/results/final/eu/
+        + _save_results__: 
 ```
 
-6. Take a look at project_structure.md file.  Describe how the project was built.
-
-
-## License
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-  
+* Take a look at project_structure.md file.  Describe how the project was built.
