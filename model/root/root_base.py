@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 18:10, 06/04/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
+
 from sklearn.preprocessing import MinMaxScaler
 from utils.PreprocessingUtil import TimeSeries
 from utils.MeasureUtil import MeasureTimeSeries
@@ -17,10 +26,10 @@ class RootBase:
         self.method_statistic = root_base_paras["method_statistic"]
         self.scaler = MinMaxScaler()
 
+        self.n_runs = root_base_paras["n_runs"]
         self.path_save_result = root_base_paras["path_save_result"]
         self.log_filename = root_base_paras["log_filename"]
         self.multi_output = root_base_paras["multi_output"]
-        self.test_type = root_base_paras["test_type"]
         self.draw = root_base_paras["draw"]
         self.print_train = root_base_paras["print_train"]
 

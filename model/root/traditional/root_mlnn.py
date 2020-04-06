@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# ------------------------------------------------------------------------------------------------------%
+# Created by "Thieu Nguyen" at 18:15, 06/04/2020                                                        %
+#                                                                                                       %
+#       Email:      nguyenthieu2102@gmail.com                                                           %
+#       Homepage:   https://www.researchgate.net/profile/Thieu_Nguyen6                                  %
+#       Github:     https://github.com/thieunguyen5991                                                  %
+# -------------------------------------------------------------------------------------------------------%
+
 from model.root.root_base import RootBase
 import time
 
@@ -16,7 +25,6 @@ class RootMlnn(RootBase):
             num_hid = len(root_mlnn_paras["hidden_sizes"]) - 1
             self.hidden_sizes = [(num_hid - i) * root_base_paras["sliding"] * root_base_paras["feature_size"] + 1 for i in range(num_hid)]
 
-
     def _forecasting__(self):
         # Evaluate models on the test set
         y_pred = self.model.predict(self.X_test)
@@ -32,12 +40,9 @@ class RootMlnn(RootBase):
         self.time_total_train = round(time.time() - self.time_total_train, 4)
         self.time_epoch = round(self.time_total_train / self.epoch, 4)
         self.time_predict = time.time()
-        y_actual, y_predict, y_actual_normalized, y_predict_normalized = self._forecasting__()
-        self.time_predict = round(time.time() - self.time_predict, 6)
+        y_true_unscaled, y_pred_unscaled, y_true_scaled, y_pred_scaled = self._forecasting__()
+        self.time_predict = round(time.time() - self.time_predict, 8)
         self.time_system = round(time.time() - self.time_system, 4)
-        if self.test_type == "normal":
-            self._save_results__(y_actual, y_predict, y_actual_normalized, y_predict_normalized, self.loss_train)
-        elif self.test_type == "stability":
-            self._save_results_ntimes_run__(y_actual, y_predict, y_actual_normalized, y_predict_normalized)
+        self._save_results__(y_true_unscaled, y_pred_unscaled, y_true_scaled, y_pred_scaled, self.loss_train, self.n_runs)
 
 
