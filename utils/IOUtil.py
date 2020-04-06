@@ -18,6 +18,9 @@ def save_loss_train_to_csv(error=None, filename=None, pathsave=None):
     np.savetxt(pathsave + filename + ".csv", np.array(error), delimiter=",")
     return None
 
+
+
+
 def save_all_models_to_csv(item=None, log_filename=None, pathsave=None):
     with open(pathsave + log_filename + ".csv", "a+") as file:
         wr = csv.writer(file, dialect='excel')
